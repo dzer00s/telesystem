@@ -1,11 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Users from './components/Users/Users';
+import Users from './Components/Users/Users';
+import Header from './Components/Header/Header';
 
 function App() {
   return (
     <div className="App">
+      <Header/>
       <Users/>
     </div>
   );
