@@ -17,7 +17,7 @@ const NavBar = () => {
         textColor="primary"
         centered
       >
-        <NavLink to="/profile" activeClassName={""}><Tab label="Посты"/></NavLink>
+        <NavLink to="/posts" activeClassName={""}><Tab label="Посты"/></NavLink>
         <NavLink to="/users" activeClassName={""}><Tab label="Пользователи"/></NavLink>
         <NavLink to="/albums" activeClassName={""}><Tab label="Альбомы"/></NavLink>
       </Tabs>
