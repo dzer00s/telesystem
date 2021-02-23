@@ -14,6 +14,11 @@ export const postsReducer = (state = initialState, action: PostsAction): PostsSt
             return {loading: false, error: null, posts: action.payload}
         case PostsActionTypes.FETCH_POSTS_ERROR:
             return {loading: false, error: action.payload, posts: []}
+        case PostsActionTypes.ADD_POST:
+            return {
+                ...state,
+                posts: [...state.posts, { id: action.id, body: action.body }]
+            }
         default:
             return state
     }

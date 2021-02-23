@@ -46,8 +46,9 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const MyPosts: React.FC = () => {
   const classes = useStyles();
+  const [bodyField, setField] = useState<string>("");
   const {posts, error, loading} = useTypedSelector(state => state.posts)
-  const {fetchPosts} = useActions()
+  const {fetchPosts, addPost} = useActions()
 
   useEffect(() => {
     fetchPosts()
@@ -61,16 +62,15 @@ const MyPosts: React.FC = () => {
   }
 
   
-  // const [bodyField, setField] = useState(undefined);
 
-  // let addNewPost = () => {
-  //   props.AddPost(bodyField);
-  //   setField("");
-  // };
+  let addNewPost = () => {
+    addPost(bodyField);
+    setField("");
+  };
 
-  // const handleChange = (event: any) => {
-  //   setField(event.target.value);
-  // }
+  const handleChange = (e: any) => {
+    setField(e.target.value);
+  }
 
   return (
     <main>
@@ -90,16 +90,16 @@ const MyPosts: React.FC = () => {
       <Container className={classes.cardGrid} maxWidth="lg">
         <Grid container spacing={4}>
           {posts.map((p) => (
-            <Post message={p.title} body={p.body} />
+            <Post message={p.title} body={p.body} key={p.id} />
           ))}
         </Grid>
         <Grid container spacing={4} justify="center" alignItems="center" className={classes.ButtonMarginTop} >
             <form>
-              {/* <label> */}
-                {/* Добавить пост */}
-                {/* <input type="text" value={bodyField} onChange={handleChange}></input> */}
-              {/* </label> */}
-              <Button variant="contained" color="primary">Добавить пост</Button>
+              <label>
+                Добавить пост
+                <input type="text" value={bodyField} onChange={handleChange}></input>
+              </label>
+              <Button variant="contained" color="primary" onClick={addNewPost}>Добавить пост</Button>
             </form>
         </Grid>
       </Container>

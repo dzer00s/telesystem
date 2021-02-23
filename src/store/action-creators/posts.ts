@@ -13,3 +13,13 @@ export const fetchPosts = () => {
         }
     }
 }
+export const addPost = (field: any) => {
+    return async (dispatch: Dispatch<PostsAction>) => {
+        try {
+            const response = await axios.post('https://jsonplaceholder.typicode.com/posts', {body: field})
+            dispatch({type: PostsActionTypes.ADD_POST, body: response.data.body, id: response.data.id})
+        } catch (e) { 
+            console.log(e)
+        }
+    }
+}
