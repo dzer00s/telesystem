@@ -4,6 +4,7 @@ import Header from './Components/Header/Header';
 import NavBar from './Components/Navbar/Nav';
 import { Route } from 'react-router';
 import MyPosts from './Components/Posts/MyPosts';
+import Albums from './Components/Albums/Albums';
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
         <Route path='/users'
           render={() => <Users />} />
         <Route path='/posts'
-          render={() => <MyPosts />} />    
+          render={() => <MyPosts />} />   
+        <Route path='/albums'
+          render={() => <Albums />} />    
     </div>
   );
 }
