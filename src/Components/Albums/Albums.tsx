@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Container, Grid, makeStyles, Typography } from "@material-ui/core";
-// import AlbumItem from "./AlbumItem";
+import AlbumItem from "./AlbumItem";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-
-const api1 = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com/",
-});
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -24,9 +19,17 @@ const Albums: React.FC = () => {
   const classes = useStyles();
   const {albums, error, loading} = useTypedSelector(state => state.albums)
   const {fetchAlbums} = useActions()
+  
   useEffect(() => {
     fetchAlbums();
   }, []);
+
+  if (loading) {
+    return <h1>loading ...</h1>
+  }
+  if (error) {
+    return <h1>{error}</h1>
+  }
 
   return (
     <main>
@@ -47,12 +50,9 @@ const Albums: React.FC = () => {
         <Grid container spacing={4}>
           {albums.map((album) => (
             <Grid item key={album.id} xs={12} sm={6} md={4}>
-              {/* <AlbumItem
-                key={album.id}
-                id={album.id}
-                title={album.title}
-                username={album.username}
-              /> */}
+              <AlbumItem
+                {...album}
+              />
             </Grid>
           ))}
         </Grid>
