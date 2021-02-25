@@ -1,0 +1,34 @@
+.item {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.photosPage {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-gap: .2rem;
+}
+
+.titleBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.closeBtn {
+  text-decoration: none;
+  color: darkblue;
+  font-size: 2rem;
+  padding: 0 3rem;
+}
+
+.heading1 {
+  color: darkblue;
+  letter-spacing: 1px;
+}
+
+.photoItem {
+  cursor: pointer;
+}

@@ -5,6 +5,7 @@ import NavBar from './Components/Navbar/Nav';
 import { Route } from 'react-router';
 import MyPosts from './Components/Posts/MyPosts';
 import Albums from './Components/Albums/Albums';
+import Photos from './Components/Albums/Photos/Photos';
 
 function App() {
   return (
@@ -15,8 +16,11 @@ function App() {
           render={() => <Users />} />
         <Route path='/posts'
           render={() => <MyPosts />} />   
-        <Route path='/albums'
-          render={() => <Albums />} />    
+        <Route exact path='/albums'
+          render={() => <Albums />} />  
+        <Route path='/albums/:id'
+         component={Photos} />
+
     </div>
   );
 }
