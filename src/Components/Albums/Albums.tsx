@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Container, Grid, makeStyles, Typography } from "@material-ui/core";
 import AlbumItem from "./AlbumItem";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import Preloader from "../../Features/Preloader";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -25,7 +26,7 @@ const Albums: React.FC = () => {
   }, []);
 
   if (loading) {
-    return <h1>loading ...</h1>
+    return <Preloader/>
   }
   if (error) {
     return <h1>{error}</h1>

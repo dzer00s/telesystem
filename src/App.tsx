@@ -20,7 +20,6 @@ function App() {
           render={() => <Albums />} />  
         <Route path='/albums/:id'
          component={Photos} />
-
     </div>
   );
 }

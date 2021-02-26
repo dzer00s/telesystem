@@ -4,18 +4,13 @@ import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import userPhoto from '../../assets/images/icon_user.png';
+import Preloader from '../../Features/Preloader';
 
 const useStyles = makeStyles((theme: Theme) => 
     createStyles({
-    icon: {
-      marginRight: theme.spacing(2),
-    },
     heroContent: {
       backgroundColor: theme.palette.background.paper,
       padding: theme.spacing(8, 0, 6),
-    },
-    heroButtons: {
-      marginTop: theme.spacing(4),
     },
     cardGrid: {
       paddingTop: theme.spacing(8),
@@ -31,11 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     cardContent: {
       flexGrow: 1,
-    },
-    footer: {
-      backgroundColor: theme.palette.background.paper,
-      padding: theme.spacing(6),
-    },
+    }
   }));
 
 const Users: React.FC = () => {
@@ -47,7 +38,7 @@ const Users: React.FC = () => {
         fetchUsers()
     }, [])
     if (loading) {
-        return <h1>loading ...</h1>
+        return <Preloader/>
     }
     if (error) {
         return <h1>{error}</h1>
@@ -76,7 +67,7 @@ const Users: React.FC = () => {
                   <CardMedia
                     className={classes.cardMedia}
                     image={userPhoto}
-                    title=""
+                    title={'Телефон: ' + u.phone}
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography align="center" gutterBottom variant="h5" component="h2">
@@ -84,7 +75,7 @@ const Users: React.FC = () => {
                     </Typography>
                     <Typography>{u.username}</Typography>
                     <Typography>email: {u.email}</Typography>
-                    <hr></hr>
+                    <hr/>
                     <Typography>Адрес проживания:</Typography>
                     <Typography>Город: {u.address.city}</Typography>
                     <Typography>Улица: {u.address.street}</Typography>

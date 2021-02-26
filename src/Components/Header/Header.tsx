@@ -1,14 +1,6 @@
-import { AppBar, createStyles, makeStyles, Theme, Toolbar, Typography } from '@material-ui/core';
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-  icon: {
-    marginRight: theme.spacing(2),
-  },
-}))
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 
 const Header = () => {
-  const classes = useStyles();
   return (
   <AppBar position="relative">
     <Toolbar>

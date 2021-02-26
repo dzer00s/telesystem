@@ -6,37 +6,17 @@ import Button from "@material-ui/core/Button";
 import { Container, Typography } from "@material-ui/core";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useActions } from "../../hooks/useActions";
+import Preloader from "../../Features/Preloader";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-  icon: {
-    marginRight: theme.spacing(2),
-  },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 6),
   },
-  heroButtons: {
-    marginTop: theme.spacing(4),
-  },
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
-  },
-  card: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-  },
-  cardMedia: {
-    paddingTop: "100%",
-  },
-  cardContent: {
-    flexGrow: 1,
-  },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
   },
   ButtonMarginTop: {
     marginTop: 50,
@@ -55,13 +35,11 @@ const MyPosts: React.FC = () => {
   }, [])
 
   if (loading) {
-      return <h1>loading ...</h1>
+      return <Preloader/>
   }
   if (error) {
       return <h1>{error}</h1>
   }
-
-  
 
   let addNewPost = () => {
     addPost(bodyField);

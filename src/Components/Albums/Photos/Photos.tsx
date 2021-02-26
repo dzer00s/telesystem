@@ -8,18 +8,29 @@ const api = axios.create({
   baseURL: "https://jsonplaceholder.typicode.com/",
 });
 
-type PhotosState = {
-    album: any,
-    user: any,
-    photos: any[],
-    posts: any[],
-    loading: boolean,
-}
 type PhotosProps = {
   readonly match?: any
 }
 
-class Photos extends Component<PhotosProps, PhotosState> {
+interface Photos {
+  state: any
+  album: {
+    id: number
+    title: string | null
+  }
+  user: {
+    id: number | null
+    name: string | null
+    email: string | null
+    phone: number | null
+    website: string | null
+  }
+  photos: any[]
+  posts: any[]
+  loading: boolean
+}
+
+class Photos extends Component<PhotosProps, Photos> {
   constructor(props: PhotosProps) {
     super(props);
     const {match} = this.props;
@@ -98,7 +109,7 @@ class Photos extends Component<PhotosProps, PhotosState> {
           </Link>
         </div>
         <div className={s.photosPage}>
-          {this.state.photos.map(photo => (
+          {this.state.photos.map((photo: any) => (
           <PhotoItem key={photo.id} {...photo} />
           ))}
         </div>

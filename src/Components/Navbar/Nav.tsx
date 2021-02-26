@@ -5,7 +5,11 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
   root: {
     flexGrow: 1,
+    marginBottom: 20,
   },
+  active: {
+    color: 'brown',
+  }
 }))
 
 const NavBar = () => {
@@ -17,9 +21,9 @@ const NavBar = () => {
         textColor="primary"
         centered
       >
-        <NavLink to="/posts" activeClassName={""}><Tab label="Посты"/></NavLink>
-        <NavLink to="/users" activeClassName={""}><Tab label="Пользователи"/></NavLink>
-        <NavLink to="/albums" activeClassName={""}><Tab label="Альбомы"/></NavLink>
+        <NavLink to="/posts" activeClassName={classes.active}><Tab label="Посты"/></NavLink>
+        <NavLink to="/users" activeClassName={classes.active}><Tab label="Пользователи"/></NavLink>
+        <NavLink to="/albums" activeClassName={classes.active}><Tab label="Альбомы"/></NavLink>
       </Tabs>
     </Paper>
   )
